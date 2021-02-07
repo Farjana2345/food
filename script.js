@@ -47,12 +47,7 @@ submit.addEventListener('submit', searchMeal);
 
 const displayFoodDetails = meal =>{
     
-    const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`
+    const url =`https://www.themealdb.com/api/json/v1/1/filter.php?i=${meal}`
     fetch(url)
-    .then(res => res.json())
-    .then(data =>foodInfo(data[0].idMeal));
-}
-const foodInfo = mealFood =>{
-    console.log(mealFood);
-    const foodDetails = document.getElementById('food-details');
+    console.log(url);
 }
