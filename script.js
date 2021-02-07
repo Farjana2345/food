@@ -31,7 +31,7 @@ function searchMeal(e){
                         <button onclick ="displayFoodDetails('${meal.idMeal}')">Details</button>
                     </div>
                   </div>
-                  ` 
+                  `
                ) 
                .join("");
             }
@@ -45,9 +45,19 @@ function searchMeal(e){
 
 submit.addEventListener('submit', searchMeal);
 
-const displayFoodDetails = meal =>{
+
+const displayFoodDetails = idMeal =>{
     
-    const url =`https://www.themealdb.com/api/json/v1/1/filter.php?i=${meal}`
+    const url =`https://www.themealdb.com/api/json/v1/1/filter.php?i=${idMeal}`
     fetch(url)
-    console.log(url);
+    .then(res => res.json())
+    .then(data => foodDetails(data[0]));
+}
+
+const foodDetails = meal =>{
+    const foodDetail = document.getElementById('food-details');
+   foodDetail.innerHTML =`
+    <h1>${meal.idMeal}</h1>
+    <h2>${meal.strArea}</h2>
+   `
 }
